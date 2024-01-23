@@ -1,0 +1,26 @@
+Diagnostics:
+    ClangTidy:
+        Add:
+            - bugprone-*
+            - clang-analyser-*
+            - cppcoreguidelines-*
+            - modernize-*
+            - readability-*
+            - modernize-use-noexcept
+        Remove:
+            - readability-magic-numbers
+            - cppcoreguidelines-avoid-magic-numbers
+        CheckOptions:
+            readability-identifier-naming.FunctionCase: snake_case
+            readability-identifier-naming.MemberCase: snake_case
+            readability-identifier-naming.MethodCase: snake_case
+            readability-identifier-naming.ParameterCase: snake_case
+            readability-identifier-naming.VariableCase: snake_case
+
+            readability-identifier-naming.IgnoreMainLikeFunctions: true
+
+            cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
+
+            readability-identifier-length.IgnoredVariableNames: (x|y|z|i|id)
+            readability-identifier-length.IgnoredParameterNames: (x|y|z|i|id)
+    UnusedIncludes: Strict

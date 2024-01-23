@@ -11,16 +11,23 @@ typedef enum {
     Finished,
 } Mode;
 
+typedef enum {
+    Success = 0,
+    AllocationError,
+    FeedingFinishedParser,
+    Unreachable,
+} ParserError;
+
 typedef struct {
-    uint8_t *buffer;
+    uint8_t* buffer;
     size_t buffer_len;
-    size_t buffer_alloc;
-    Mode mode;
+    size_t _buffer_alloc;
     size_t content_length;
+    Mode mode;
 } Parser;
 
-void parser_new(Parser *parser);
-void parser_feed(Parser *parser, uint8_t byte);
-void parser_free(Parser *parser);
+ParserError parser_init(Parser* parser);
+ParserError parser_feed(Parser* parser, uint8_t byte);
+void parser_deinit(Parser* parser);
 
 #endif
